@@ -1,30 +1,26 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import UserProfile from './userProfile';
 
 function App() {
-  const [count, setCount] = useState(0);
-  const handleIncrement =() => {
-    setCount(count + 1);
-  };
-
-  const handleDecrement =() => {
-    setCount(count -1);
-  };
+  const users = [
+    { id: 1, name: 'Bona S', job:'Lead Developer', avatar: 'https://i.pravatar.cc/150?image=1'},
+    { id: 2, name: 'Alice Smith', job :'UI/UX Designer', avatar: 'https://i.pravatar.cc/150?image=2'},
+    { id: 3, name: 'Charlie Brown', job:'Project Manager', avatar: 'https://i.pravatar.cc/150?image=3'}
+  ];  
 
   return (
-    <div style={{textAlign: 'center', marginTop: '50px'}}>
-      <h1>React Counter</h1>
-      <p style={{fontsize: '48px'}}>{count}</p>
-      <div>
-      <button onclick={handleDecrement} style={{marginRight: '10px'}}>Decrement</button>
-      <button onClick={handleIncrement}>Increment</button>
+    <div>
+      <h1 style={{ textAlign: 'center' }}>User Profiles</h1>
+      <div style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
+        {users.map(user => (
+          <UserProfile
+            key={user.id}
+            name={user.name}
+            job={user.job}
+            avatar={user.avatar}
+          />
+        ))}
       </div>
-      </div>
-  
-
-
+    </div>
   );
 }
 
